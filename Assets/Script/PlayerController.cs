@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 1.0f;    //ˆÚ“®‘¬“x
-    [SerializeField] private Animator animator;     //Animator‚ÌƒZƒbƒg
-    Vector2 PlayerPos; //ƒvƒŒƒCƒ„[‚ÌˆÊ’u
+    [SerializeField] private float speed = 1.0f;    //ç§»å‹•é€Ÿåº¦
+    [SerializeField] private Animator animator;     //Animatorã®ã‚»ãƒƒãƒˆ
+    Vector2 PlayerPos; //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½ç½®
     SpriteRenderer spriteRenderer;
 
 
@@ -22,20 +22,20 @@ public class PlayerController : MonoBehaviour
         PlayerMoving();
     }
 
-    //ƒvƒŒƒCƒ„[‚ÌˆÚ“®ˆ—
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•å‡¦ç†
     void PlayerMoving()
     {
-        float horizontal = Input.GetAxis("Horizontal"); // ©¨‚Ü‚½‚ÍADƒL[“ü—Í‚ğŒŸo
-        float vertical = Input.GetAxis("Vertical");     // ª«‚Ü‚½‚ÍWSƒL[“ü—Í‚ğŒŸo
+        float horizontal = Input.GetAxis("Horizontal"); // â†â†’ã¾ãŸã¯ADã‚­ãƒ¼å…¥åŠ›ã‚’æ¤œå‡º
+        float vertical = Input.GetAxis("Vertical");     // â†‘â†“ã¾ãŸã¯WSã‚­ãƒ¼å…¥åŠ›ã‚’æ¤œå‡º
 
-        if (vertical < 0) //‰º“ü—Í‚³‚ê‚½‚Æ‚«
+        if (vertical < 0) //ä¸‹å…¥åŠ›ã•ã‚ŒãŸã¨ã
         {
-            animator.SetTrigger("front");@//è‘O‚ğŒü‚­
+            animator.SetTrigger("front");ã€€//æ‰‹å‰ã‚’å‘ã
         }
 
-        if (vertical > 0)@//ã“ü—Í‚³‚ê‚½‚Æ‚«
+        if (vertical > 0)ã€€//ä¸Šå…¥åŠ›ã•ã‚ŒãŸã¨ã
         {
-            animator.SetTrigger("behind");@//‰œ‚ğŒü‚­
+            animator.SetTrigger("behind");ã€€//å¥¥ã‚’å‘ã
         }
 
       
@@ -43,13 +43,13 @@ public class PlayerController : MonoBehaviour
         if (horizontal != 0)
         {
 
-            if (horizontal > 0) //¶“ü—Í‚³‚ê‚½‚Æ‚«
+            if (horizontal > 0) //å·¦å…¥åŠ›ã•ã‚ŒãŸã¨ã
             {
-                spriteRenderer.flipX = false; //¶‚ğŒü‚­
+                spriteRenderer.flipX = false; //å·¦ã‚’å‘ã
             }
-            else if (horizontal < 0) //‰E“ü—Í‚³‚ê‚½‚Æ‚«
+            else if (horizontal < 0) //å³å…¥åŠ›ã•ã‚ŒãŸã¨ã
             {
-                spriteRenderer.flipX = true; //‰E‚ğŒü‚­
+                spriteRenderer.flipX = true; //å³ã‚’å‘ã
             }
             PlayerPos.x += horizontal * speed;
             animator.SetFloat("speed", 1.0f);
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed", 0.0f);
         }
 
-        transform.position = PlayerPos; //ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ğXV
+        transform.position = PlayerPos; //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½ç½®ã‚’æ›´æ–°
 
         
 
@@ -68,17 +68,17 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //©”Ì‹@‚ğ’T‚·Û‚Ìˆ—
+    //è‡ªè²©æ©Ÿã‚’æ¢ã™éš›ã®å‡¦ç†
     void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("è‡ªè²©æ©Ÿã®å‰ã«ã„ã¾ã™ã€‚");
         if (other.CompareTag("VendingMachine"))
         {
-
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetInteger("direction", 3); //©”Ì‹@‚Ì‚Ù‚¤‚ğŒü‚­
-                Debug.Log("©”Ì‹@‚ğƒNƒŠƒbƒN‚µ‚Ü‚µ‚½");
-                //©”Ì‹@‚ğ’T‚·ˆ—‚ğ’Ç‰Á
+                animator.SetTrigger("behind"); //å¥¥ã‚’å‘ã 
+                other.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
             }
         }
     }
