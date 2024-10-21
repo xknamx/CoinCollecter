@@ -13,24 +13,31 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private GameObject fiftyYenPrefab;
     public int totalValue = 0;
     private int coinValue = 0;
+    private List<GameObject> spawnedCoins = new List<GameObject>(); // 生成したコインを管理するリスト
+
+
 
     private void Start()
     {
-        int randomCoinCount = Random.Range(3, 10);
-        SpawnRandomCoins(randomCoinCount);
+        //int randomCoinCount = Random.Range(3, 10);
+        //SpawnRandomCoins(randomCoinCount);
 
     }
 
-
+    
 
     // コインをランダムに生成するメソッド
     public void SpawnRandomCoins(int coinCount)
     {
+        // 既存のコインをリセットする処理
+        ResetCoins();
+
         for (int i = 0; i < coinCount; i++)
         {
             // コインの種類をランダムに決める
             int coinType = Random.Range(0, 4);  // 0: 1円, 1: 5円, 2: 10円, 3: 50円
             GameObject coinPrefabToSpawn;
+
 
             switch (coinType)
             {
@@ -58,6 +65,18 @@ public class CoinSpawner : MonoBehaviour
             // コインを生成
             Instantiate(coinPrefabToSpawn, GetRandomPosition(), Quaternion.identity);
             totalValue += coinValue;
+        }
+    }
+    // コインをリセット（削除）するメソッド
+    private void ResetCoins()
+    {
+        // 既存のコインをすべて削除
+        foreach (GameObject coin in spawnedCoins)
+        {
+            Destroy(coin);
+
+            // コインリストをクリア
+            spawnedCoins.Clear();
         }
     }
 
