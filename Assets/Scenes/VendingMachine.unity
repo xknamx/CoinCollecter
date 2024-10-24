@@ -307,7 +307,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &976058540
+--- !u!61 &976058544
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,7 +350,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83, y: 1.08}
+  m_Size: {x: 0.78, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &1725322340
 PrefabInstance:
@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358540957993030612, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.27
       objectReference: {fileID: 0}
     - target: {fileID: 2358540957993030612, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6223967327190881173, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
+      propertyPath: speed
+      value: 0.025
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -419,9 +423,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1336901234241707182, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 976058539}
-    - targetCorrespondingSourceObject: {fileID: 1336901234241707182, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 976058540}
   m_SourcePrefab: {fileID: 100100000, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
