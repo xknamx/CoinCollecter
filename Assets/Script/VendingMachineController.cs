@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VendingMachineController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject searchPanel;
     void Start()
     {
-
+        searchPanel = GameObject.Find("SearchPanel");
     }
 
     // Update is called once per frame
@@ -19,5 +20,6 @@ public class VendingMachineController : MonoBehaviour
     public void ClickedVendingMachineOnMap()
     {
         Debug.Log("自販機がクリックされた");
+        searchPanel.SetActive(true);
     }
 }
