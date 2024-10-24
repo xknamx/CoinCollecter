@@ -24,7 +24,7 @@ public class CoinSpawner : MonoBehaviour
 
     }
 
-    
+
 
     // コインをランダムに生成するメソッド
     public void SpawnRandomCoins(int coinCount)
@@ -62,8 +62,10 @@ public class CoinSpawner : MonoBehaviour
                     coinValue = 1;
                     break;
             }
-            // コインを生成
-            Instantiate(coinPrefabToSpawn, GetRandomPosition(), Quaternion.identity);
+            // コインを生成し、リストに追加
+            GameObject spawnedCoin = Instantiate(coinPrefabToSpawn, GetRandomPosition(), Quaternion.identity);
+            spawnedCoins.Add(spawnedCoin);  // 生成したコインをリストに追加
+
             totalValue += coinValue;
         }
     }
@@ -74,10 +76,10 @@ public class CoinSpawner : MonoBehaviour
         foreach (GameObject coin in spawnedCoins)
         {
             Destroy(coin);
-
-            // コインリストをクリア
-            spawnedCoins.Clear();
         }
+
+        // コインリストをクリア
+        spawnedCoins.Clear();
     }
 
     // ランダムな位置を取得するメソッド
