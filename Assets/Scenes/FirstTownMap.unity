@@ -1894,11 +1894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358540957993030612, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2358540957993030612, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2358540957993030612, guid: c532ae12e018c4c479d2d0ba7f24efe4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2221,6 +2221,7 @@ GameObject:
   - component: {fileID: 1421186200}
   - component: {fileID: 1421186199}
   - component: {fileID: 1421186198}
+  - component: {fileID: 1421186201}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2296,12 +2297,26 @@ Transform:
   m_GameObject: {fileID: 1421186197}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.46, y: 0, z: -10}
+  m_LocalPosition: {x: -9, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421186201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421186197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6708740fa9a8bfd4a9286f8a7c68c8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPosMinX: -9
+  cameraPosMaxX: 9
 --- !u!1 &1997712708
 GameObject:
   m_ObjectHideFlags: 0
