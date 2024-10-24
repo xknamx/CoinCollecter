@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 1.0f;    //移動速度
-    [SerializeField] private Animator animator;     //Animatorのセット
-    Vector2 PlayerPos; //プレイヤーの位置
+    [SerializeField] float speed = 1.0f;    //移動速度
+    [SerializeField] Animator animator;     //Animatorのセット
+    Vector3 playerPos; //プレイヤーの位置
+    [SerializeField] float playerPosMinX = -17.5f;  //プレイヤーの左端移動可能位置
+    [SerializeField] float playerPosMaxX = 17.5f;　//プレイヤーの右端移動可能位置
+
     SpriteRenderer spriteRenderer;
     GameObject vendingMachine; //自販機のプレハブ
     bool isFrontVendingMachine = false; //自販機の前にいるかのフラグ
 
 
+    private void Awake()
+    {
+        playerPos = new Vector3(playerPosMinX, -2f,transform.position.z);
+        //左端からスタート
+
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
-        PlayerPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
@@ -61,8 +71,14 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = true; //右を向く
             }
-            PlayerPos.x += horizontal * speed * 60.0f * Time.deltaTime;
+            playerPos.x += horizontal * speed * 60.0f * Time.deltaTime;
             animator.SetFloat("speed", 1.0f);
+
+
+            if (playerPosMinX < playerPos.x && playerPos.x < playerPosMaxX)
+            {
+                transform.position = playerPos; //プレイヤーの位置を更新
+            }
 
         }
         else
@@ -70,13 +86,15 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed", 0.0f);
         }
 
-        transform.position = PlayerPos; //プレイヤーの位置を更新
+
+        
+       
 
 
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("VendingMachine"))
         {
