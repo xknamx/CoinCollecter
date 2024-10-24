@@ -7,35 +7,41 @@ public class SearchButton : MonoBehaviour
 {
     [SerializeField] private CoinSpawner coinSpawner;
     private Button button;
-    // ’Ç‰Á: ƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‰ñ”‚ÌãŒÀ‚ÆŒ»İ‚Ì‰Ÿ‚³‚ê‚½‰ñ”‚ğŠÇ—
+    // è¿½åŠ : ãƒœã‚¿ãƒ³ã‚’æŠ¼ã›ã‚‹å›æ•°ã®ä¸Šé™ã¨ç¾åœ¨ã®æŠ¼ã•ã‚ŒãŸå›æ•°ã‚’ç®¡ç†
+    [SerializeField] private int minClickCount = 2;  // ãƒœã‚¿ãƒ³ã‚’æŠ¼ã›ã‚‹å›æ•°ã®æœ€å°å€¤
+    [SerializeField] private int maxClickCountRange = 5;  // ãƒœã‚¿ãƒ³ã‚’æŠ¼ã›ã‚‹å›æ•°ã®æœ€å¤§å€¤
     private int maxClickCount;
     private int currentClickCount = 0;
+
+    [SerializeField] private int minCoinsCount = 3;  // ã‚³ã‚¤ãƒ³æ•°ã®æœ€å°å€¤
+    [SerializeField] private int maxCoinsCount = 10;  // ã‚³ã‚¤ãƒ³æ•°ã®æœ€å¤§å€¤
 
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
-        // ƒ‰ƒ“ƒ_ƒ€‚Å‰Ÿ‚¹‚é‰ñ”‚ğŒˆ’èi2‰ñ‚©‚ç5‰ñ‚ÌŠÔj
-        maxClickCount = Random.Range(2, 5);
+        // ãƒ©ãƒ³ãƒ€ãƒ ã§æŠ¼ã›ã‚‹å›æ•°ã‚’è¨­å®š
+        maxClickCount = Random.Range(minClickCount, maxClickCountRange); ;
     }
     private void OnClick()
     {
-        int randomCoinCount = Random.Range(3, 10);
+        // ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§è¨­å®šã•ã‚ŒãŸç¯„å›²ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«ã‚³ã‚¤ãƒ³ã®æ•°ã‚’ç”Ÿæˆ
+        int randomCoinCount = Random.Range(minCoinsCount, maxCoinsCount);
 
-        // ƒRƒCƒ“‚ğƒŠƒZƒbƒg‚µAV‚µ‚¢ƒRƒCƒ“‚ğ¶¬
+        // ã‚³ã‚¤ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆã—ã€æ–°ã—ã„ã‚³ã‚¤ãƒ³ã‚’ç”Ÿæˆ
         coinSpawner.SpawnRandomCoins(randomCoinCount);
 
-        // ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‰ñ”‚ğ‘‚â‚·
+        // ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸå›æ•°ã‚’å¢—ã‚„ã™
         currentClickCount++;
 
-        Debug.Log("‡Œv‹àŠz: " + coinSpawner.totalValue + "‰~");
-        Debug.Log("Œ»İ‚ÌƒNƒŠƒbƒN”: " + currentClickCount + " / " + maxClickCount);
+        Debug.Log("åˆè¨ˆé‡‘é¡: " + coinSpawner.totalValue + "å††");
+        Debug.Log("ç¾åœ¨ã®ã‚¯ãƒªãƒƒã‚¯æ•°: " + currentClickCount + " / " + maxClickCount);
 
-        // ƒNƒŠƒbƒN”‚ªãŒÀ‚É’B‚µ‚½‚çƒ{ƒ^ƒ“‚ğ–³Œø‰»
+        // ã‚¯ãƒªãƒƒã‚¯æ•°ãŒä¸Šé™ã«é”ã—ãŸã‚‰ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹åŒ–
         if (currentClickCount >= maxClickCount)
         {
-            button.interactable = false; // ƒ{ƒ^ƒ“‚ğ–³Œø‚É‚·‚é
-            Debug.Log("ƒ{ƒ^ƒ“‚ª–³Œø‰»‚³‚ê‚Ü‚µ‚½B");
+            button.interactable = false; // ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹ã«ã™ã‚‹
+            Debug.Log("ãƒœã‚¿ãƒ³ãŒç„¡åŠ¹åŒ–ã•ã‚Œã¾ã—ãŸã€‚");
         }
     }
 }

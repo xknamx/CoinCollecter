@@ -13,8 +13,12 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private GameObject fiftyYenPrefab;
     public int totalValue = 0;
     private int coinValue = 0;
-    private List<GameObject> spawnedCoins = new List<GameObject>(); // ¶¬‚µ‚½ƒRƒCƒ“‚ğŠÇ—‚·‚éƒŠƒXƒg
+    private List<GameObject> spawnedCoins = new List<GameObject>(); // ç”Ÿæˆã—ãŸã‚³ã‚¤ãƒ³ã‚’ç®¡ç†ã™ã‚‹ãƒªã‚¹ãƒˆ
 
+    [SerializeField] private float oneYenProbability = 0.4f;  // 1å††ã‚³ã‚¤ãƒ³ã®å‡ºç¾ç¢ºç‡
+    [SerializeField] private float fiveYenProbability = 0.3f; // 5å††ã‚³ã‚¤ãƒ³ã®å‡ºç¾ç¢ºç‡
+    [SerializeField] private float tenYenProbability = 0.2f;  // 10å††ã‚³ã‚¤ãƒ³ã®å‡ºç¾ç¢ºç‡
+    [SerializeField] private float fiftyYenProbability = 0.1f; // 50å††ã‚³ã‚¤ãƒ³ã®å‡ºç¾ç¢ºç‡
 
 
     private void Start()
@@ -26,63 +30,84 @@ public class CoinSpawner : MonoBehaviour
 
 
 
-    // ƒRƒCƒ“‚ğƒ‰ƒ“ƒ_ƒ€‚É¶¬‚·‚éƒƒ\ƒbƒh
+    // ã‚³ã‚¤ãƒ³ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«ç”Ÿæˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
     public void SpawnRandomCoins(int coinCount)
     {
-        // Šù‘¶‚ÌƒRƒCƒ“‚ğƒŠƒZƒbƒg‚·‚éˆ—
+        // æ—¢å­˜ã®ã‚³ã‚¤ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹å‡¦ç†
         ResetCoins();
 
         for (int i = 0; i < coinCount; i++)
         {
-            // ƒRƒCƒ“‚Ìí—Ş‚ğƒ‰ƒ“ƒ_ƒ€‚ÉŒˆ‚ß‚é
-            int coinType = Random.Range(0, 4);  // 0: 1‰~, 1: 5‰~, 2: 10‰~, 3: 50‰~
-            GameObject coinPrefabToSpawn;
+            // ãƒ©ãƒ³ãƒ€ãƒ ã«ã‚³ã‚¤ãƒ³ã®ç¨®é¡ã‚’æ±ºå®š
+            GameObject coinPrefabToSpawn = GetRandomCoin();
+            int coinValue = GetCoinValue(coinPrefabToSpawn);
 
-
-            switch (coinType)
-            {
-                case 0:
-                    coinPrefabToSpawn = oneYenPrefab;
-                    coinValue = 1;
-                    break;
-                case 1:
-                    coinPrefabToSpawn = fiveYenPrefab;
-                    coinValue = 5;
-                    break;
-                case 2:
-                    coinPrefabToSpawn = tenYenPrefab;
-                    coinValue = 10;
-                    break;
-                case 3:
-                    coinPrefabToSpawn = fiftyYenPrefab;
-                    coinValue = 50;
-                    break;
-                default:
-                    coinPrefabToSpawn = oneYenPrefab;  // ƒfƒtƒHƒ‹ƒg‚Å1‰~‚É‚·‚é
-                    coinValue = 1;
-                    break;
-            }
-            // ƒRƒCƒ“‚ğ¶¬‚µAƒŠƒXƒg‚É’Ç‰Á
+            // ã‚³ã‚¤ãƒ³ã‚’ç”Ÿæˆã—ã€ãƒªã‚¹ãƒˆã«è¿½åŠ 
             GameObject spawnedCoin = Instantiate(coinPrefabToSpawn, GetRandomPosition(), Quaternion.identity);
-            spawnedCoins.Add(spawnedCoin);  // ¶¬‚µ‚½ƒRƒCƒ“‚ğƒŠƒXƒg‚É’Ç‰Á
+            spawnedCoins.Add(spawnedCoin);  // ç”Ÿæˆã—ãŸã‚³ã‚¤ãƒ³ã‚’ãƒªã‚¹ãƒˆã«è¿½åŠ 
 
             totalValue += coinValue;
         }
     }
-    // ƒRƒCƒ“‚ğƒŠƒZƒbƒgiíœj‚·‚éƒƒ\ƒbƒh
+
+    // ãƒ©ãƒ³ãƒ€ãƒ ãªã‚³ã‚¤ãƒ³ã‚’ç¢ºç‡ã«åŸºã¥ã„ã¦å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    private GameObject GetRandomCoin()
+    {
+        float randomValue = Random.Range(0f, 1f); // 0ã‹ã‚‰1ã¾ã§ã®ãƒ©ãƒ³ãƒ€ãƒ ãªå€¤ã‚’å–å¾—
+
+        if (randomValue < oneYenProbability)
+        {
+            return oneYenPrefab;
+        }
+        else if (randomValue < oneYenProbability + fiveYenProbability)
+        {
+            return fiveYenPrefab;
+        }
+        else if (randomValue < oneYenProbability + fiveYenProbability + tenYenProbability)
+        {
+            return tenYenPrefab;
+        }
+        else
+        {
+            return fiftyYenPrefab;
+        }
+    }
+
+    // ã‚³ã‚¤ãƒ³ã®ä¾¡å€¤ã‚’è¿”ã™ãƒ¡ã‚½ãƒƒãƒ‰
+    private int GetCoinValue(GameObject coinPrefab)
+    {
+        if (coinPrefab == oneYenPrefab)
+        {
+            return 1;
+        }
+        else if (coinPrefab == fiveYenPrefab)
+        {
+            return 5;
+        }
+        else if (coinPrefab == tenYenPrefab)
+        {
+            return 10;
+        }
+        else if (coinPrefab == fiftyYenPrefab)
+        {
+            return 50;
+        }
+        return 0;
+    }
+    // ã‚³ã‚¤ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆï¼ˆå‰Šé™¤ï¼‰ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
     private void ResetCoins()
     {
-        // Šù‘¶‚ÌƒRƒCƒ“‚ğ‚·‚×‚Äíœ
+        // æ—¢å­˜ã®ã‚³ã‚¤ãƒ³ã‚’ã™ã¹ã¦å‰Šé™¤
         foreach (GameObject coin in spawnedCoins)
         {
             Destroy(coin);
         }
 
-        // ƒRƒCƒ“ƒŠƒXƒg‚ğƒNƒŠƒA
+        // ã‚³ã‚¤ãƒ³ãƒªã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢
         spawnedCoins.Clear();
     }
 
-    // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚ğæ“¾‚·‚éƒƒ\ƒbƒh
+    // ãƒ©ãƒ³ãƒ€ãƒ ãªä½ç½®ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
     private Vector3 GetRandomPosition()
     {
         float x = Random.Range(-5f, 5f);
