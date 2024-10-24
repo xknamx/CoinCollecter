@@ -71,14 +71,14 @@ public class PlayerController : MonoBehaviour
     //自販機を探す際の処理
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("自販機の前にいます。");
+       // Debug.Log("自販機の前にいます。");
         if (other.CompareTag("VendingMachine"))
         {
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetTrigger("behind"); //奥を向く 
                 other.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
+                animator.SetTrigger("behind"); //奥を向く 
             }
         }
     }
