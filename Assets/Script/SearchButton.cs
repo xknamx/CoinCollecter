@@ -9,7 +9,6 @@ public class SearchButton : MonoBehaviour
     private Button button;
 
     [SerializeField] private LineOfSight lineOfSight;  // LineOfSight の参照
-    [SerializeField] private Slider lineOfSightSlider; // スライダーの参照
 
     // 追加: ボタンを押せる回数の上限と現在の押された回数を管理
     [SerializeField] private int minClickCount = 2;  // ボタンを押せる回数の最小値
@@ -38,11 +37,9 @@ public class SearchButton : MonoBehaviour
         // コインをリセットし、新しいコインを生成
         coinSpawner.SpawnRandomCoins(randomCoinCount);
 
-        // LineOfSight の視線ポイントを増加
-        if (lineOfSight != null)
-        {
-            lineOfSight.IncreaseLineOfSightPoint();
-        }
+        // 視線ポイントを加算
+        lineOfSight.IncreaseLineOfSightPoint(1);  // 1ポイントずつ加算
+
         // ボタンが押された回数を増やす
         currentClickCount++;
 
