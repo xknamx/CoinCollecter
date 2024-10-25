@@ -7,6 +7,8 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public class CoinSpawner : MonoBehaviour
 {
+    [SerializeField] private RectTransform rectTransform; //canvasのrecttransformをセット
+
     [SerializeField] private GameObject oneYenPrefab;
     [SerializeField] private GameObject fiveYenPrefab;
     [SerializeField] private GameObject tenYenPrefab;
@@ -42,11 +44,15 @@ public class CoinSpawner : MonoBehaviour
             GameObject coinPrefabToSpawn = GetRandomCoin();
             int coinValue = GetCoinValue(coinPrefabToSpawn);
 
-            // コインを生成し、リストに追加
-            GameObject spawnedCoin = Instantiate(coinPrefabToSpawn, GetRandomPosition(), Quaternion.identity);
+
+            GameObject spawnedCoin = Instantiate(coinPrefabToSpawn, rectTransform); //canvas上にコインを生成
+            spawnedCoin.GetComponent<RectTransform>().anchoredPosition = GetRandomPosition(); //位置をランダムに
+            spawnedCoin.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, Random.Range(0, 360));
+
+
             spawnedCoins.Add(spawnedCoin);  // 生成したコインをリストに追加
 
-            totalValue += coinValue;
+            totalValue += coinValue;　//合計金額にプラス
         }
     }
 
@@ -94,7 +100,8 @@ public class CoinSpawner : MonoBehaviour
         }
         return 0;
     }
-    // コインをリセット（削除）するメソッド
+
+    // コイン画像表示を削除するメソッド
     private void ResetCoins()
     {
         // 既存のコインをすべて削除
@@ -108,11 +115,11 @@ public class CoinSpawner : MonoBehaviour
     }
 
     // ランダムな位置を取得するメソッド
-    private Vector3 GetRandomPosition()
+    private Vector2 GetRandomPosition()
     {
-        float x = Random.Range(-5f, 5f);
-        float y = Random.Range(-1f, -2f);
-        float z = Random.Range(-5f, 5f);
-        return new Vector3(x, y, z);
+        float x = Random.Range(-400f, 400f);
+        float y = Random.Range(-100f, -200f);
+
+        return new Vector2(x, y);
     }
 }
