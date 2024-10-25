@@ -38,11 +38,9 @@ public class SearchButton : MonoBehaviour
         // コインをリセットし、新しいコインを生成
         coinSpawner.SpawnRandomCoins(randomCoinCount);
 
-        // LineOfSight の視線ポイントを増加
-        if (lineOfSight != null)
-        {
-            lineOfSight.IncreaseLineOfSightPoint();
-        }
+        // 視線ポイントを加算
+        lineOfSight.IncreaseLineOfSightPoint(1);  // 1ポイントずつ加算
+
         // ボタンが押された回数を増やす
         currentClickCount++;
 
