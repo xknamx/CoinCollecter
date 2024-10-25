@@ -9,7 +9,6 @@ public class SearchButton : MonoBehaviour
     private Button button;
 
     [SerializeField] private LineOfSight lineOfSight;  // LineOfSight の参照
-    [SerializeField] private Slider lineOfSightSlider; // スライダーの参照
 
     // 追加: ボタンを押せる回数の上限と現在の押された回数を管理
     [SerializeField] private int minClickCount = 2;  // ボタンを押せる回数の最小値
