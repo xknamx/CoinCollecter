@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetFloat("speed", 0.0f);
-            animator.SetTrigger("behind"); //奥を向く
+            animator.SetTrigger("behind"); //自販機を探すしゃがみアニメーションを再生
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
         }
     }

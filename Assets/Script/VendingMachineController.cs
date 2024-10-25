@@ -23,7 +23,7 @@ public class VendingMachineController : MonoBehaviour
     public void ClickedVendingMachineOnMap()
     {
         Debug.Log("自販機がクリックされた");
-        searchPanel.GetComponent<SearchPanel>().ShowSearchPanel();
+        searchPanel.GetComponent<SearchPanel>().ClicedSearchPanel();
     }
 
     
