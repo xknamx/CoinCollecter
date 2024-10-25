@@ -31,4 +31,9 @@ public class SearchPanel : MonoBehaviour
         animation.Play();
 
     }
+
+    public void CloseSearchPanel()
+    {
+        gameObject.SetActive(false );
+    }
 }
