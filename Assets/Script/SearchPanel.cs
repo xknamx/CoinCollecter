@@ -22,8 +22,9 @@ public class SearchPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         StartCoroutine(FadeinAnimation());
-
     }
+
+   
 
     IEnumerator FadeinAnimation()
     {
