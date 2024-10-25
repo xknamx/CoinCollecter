@@ -23,8 +23,15 @@ public class VendingMachineController : MonoBehaviour
     public void ClickedVendingMachineOnMap()
     {
         Debug.Log("自販機がクリックされた");
-        searchPanel.GetComponent<SearchPanel>().ClicedSearchPanel();
+        StartCoroutine(ShowUIPanel());
+       
     }
 
+
+    IEnumerator ShowUIPanel()
+    {
+        yield return new WaitForSeconds(0.6f);
+        searchPanel.GetComponent<SearchPanel>().ShowSearchPanel();
+    }
     
 }

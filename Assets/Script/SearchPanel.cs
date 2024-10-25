@@ -18,18 +18,13 @@ public class SearchPanel : MonoBehaviour
 
     }
 
-    public void ClicedSearchPanel()
+    public void ShowSearchPanel()
     {
-        StartCoroutine(ShowSearchPanel());
-    }
-
-     IEnumerator ShowSearchPanel()
-    {
-        yield return new WaitForSeconds(0.8f);
         gameObject.SetActive(true);
         StartCoroutine(FadeinAnimation());
-
     }
+
+   
 
     IEnumerator FadeinAnimation()
     {
