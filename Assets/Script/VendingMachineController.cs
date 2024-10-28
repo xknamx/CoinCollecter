@@ -36,7 +36,7 @@ public class VendingMachineController : MonoBehaviour
         }
         else 
         {
-            playerController.ShowTextBox("もう探した自販機だ");           
+            playerController.ShowTextBox("もう探した自販機だ");
         }
     }
 

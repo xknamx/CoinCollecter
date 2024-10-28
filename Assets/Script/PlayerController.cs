@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -107,15 +108,24 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("VendingMachine"))
         {
             isFrontVendingMachine = false;
-            textBox.SetActive(false);
+
+            if (textBox.activeSelf) //テキストボックスが表示されている場合は閉じる
+            {
+                textBox.SetActive(false);
+            }
+            
             Debug.Log("自販機から離れた");
         }
     }
 
     public void ShowTextBox(string text)
     {
-        textBox.SetActive(true);
-        textBox.GetComponent<Text>().text = text;
+        if (!textBox.activeSelf)
+        {
+            textBox.SetActive(true);
+        }
+        var textbox = textBox.GetComponentInChildren<TextMeshProUGUI>();
+        textbox.text = text;
     }
 
     public void SearchAnimation()
