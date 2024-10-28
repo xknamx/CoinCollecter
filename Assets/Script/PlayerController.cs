@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerPos = new Vector3(playerPosMinX, -2f,transform.position.z);
-        //左端からスタート
+        playerPos = new Vector3(-17.0f, -2f,transform.position.z);
+       // 左端からスタート
 
     }
 
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetFloat("speed", 0.0f);
-            animator.SetTrigger("behind"); //奥を向く
+            animator.SetTrigger("search"); //自販機を探すしゃがみアニメーションを再生
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
         }
     }
@@ -85,12 +85,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("speed", 0.0f);
         }
-
-
-        
-       
-
-
 
     }
 

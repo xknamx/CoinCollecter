@@ -19,7 +19,7 @@ public class SearchButton : MonoBehaviour
     [SerializeField] private int minCoinsCount = 3;  // コイン数の最小値
     [SerializeField] private int maxCoinsCount = 10;  // コイン数の最大値
 
-
+    
 
 
     private void Awake()
@@ -52,6 +52,14 @@ public class SearchButton : MonoBehaviour
             button.interactable = false; // ボタンを無効にする
             Debug.Log("ボタンが無効化されました。");
         }
+    }
+
+    // リセットメソッドを追加
+    public void ResetButton()
+    {
+        currentClickCount = 0; // クリックカウントをリセット
+        button.interactable = true; // ボタンを再度押せるようにする
+        Debug.Log("ボタンの状態がリセットされました。");
     }
 }
 

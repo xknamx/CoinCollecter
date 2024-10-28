@@ -5,6 +5,7 @@ using UnityEngine;
 public class SearchPanel : MonoBehaviour
 {
     [SerializeField] Animation animation = new Animation();
+    [SerializeField] private SearchButton searchButton; // SearchButtonの参照を追加
 
 
     void Start()
@@ -23,7 +24,11 @@ public class SearchPanel : MonoBehaviour
         gameObject.SetActive(true);
         StartCoroutine(FadeinAnimation());
 
+        // SearchButtonのリセット処理を呼び出す
+        searchButton.ResetButton();
     }
+
+   
 
     IEnumerator FadeinAnimation()
     {

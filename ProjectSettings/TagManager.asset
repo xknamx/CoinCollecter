@@ -6,6 +6,7 @@ TagManager:
   tags:
   - VendingMachine
   - BackGround
+  - Coin
   layers:
   - Default
   - TransparentFX
