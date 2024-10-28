@@ -9,6 +9,8 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] GameObject searchPanel;
     //UnityEvent clickedVendingMachine;
 
+    private bool isSearched = false; //すでに探された自販機かどうかのフラグ
+
     void Start()
     {
         
@@ -23,8 +25,12 @@ public class VendingMachineController : MonoBehaviour
     public void ClickedVendingMachineOnMap()
     {
         Debug.Log("自販機がクリックされた");
-        StartCoroutine(ShowUIPanel());
-       
+        if (!isSearched)
+        {
+            isSearched = true;
+            StartCoroutine(ShowUIPanel());
+        }
+        else { Debug.Log("すでに探した自販機だ"); }
     }
 
 
