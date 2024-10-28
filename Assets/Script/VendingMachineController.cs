@@ -9,6 +9,9 @@ public class VendingMachineController : MonoBehaviour
     [SerializeField] GameObject searchPanel;
     //UnityEvent clickedVendingMachine;
 
+    [SerializeField] PlayerController playerController;
+
+
     private bool isSearched = false; //すでに探された自販機かどうかのフラグ
 
     void Start()
@@ -28,9 +31,13 @@ public class VendingMachineController : MonoBehaviour
         if (!isSearched)
         {
             isSearched = true;
+            playerController.SearchAnimation();
             StartCoroutine(ShowUIPanel());
         }
-        else { Debug.Log("すでに探した自販機だ"); }
+        else 
+        {
+            playerController.ShowTextBox("もう探した自販機だ");           
+        }
     }
 
 
