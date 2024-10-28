@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Price : MonoBehaviour
 {
-    [SerializeField] private CoinSpawner coinSpawner; // CoinSpawner‚ğƒCƒ“ƒXƒyƒNƒ^‚Åİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚é
-    private TextMeshProUGUI textMeshPro; // TextMeshProUGUI‚ÌQÆ
+   // [SerializeField] private GameManager gameManager; // CoinSpawnerã‚’ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã§è¨­å®šã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+    private TextMeshProUGUI textMeshPro; // TextMeshProUGUIã®å‚ç…§
 
     void Start()
     {
@@ -17,6 +17,6 @@ public class Price : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            textMeshPro.text = "Š‹à: " + coinSpawner.totalValue.ToString() + "‰~";
+        textMeshPro.text = "æ‰€æŒé‡‘: " + GameManager.Instance.totalValue.ToString() + "å††";
     }
 }

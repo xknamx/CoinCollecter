@@ -7,12 +7,15 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public class CoinSpawner : MonoBehaviour
 {
+    [SerializeField] GameObject gamemanager;
     [SerializeField] private RectTransform rectTransform; //canvasのrecttransformをセット
 
     [SerializeField] private GameObject oneYenPrefab;
     [SerializeField] private GameObject fiveYenPrefab;
     [SerializeField] private GameObject tenYenPrefab;
     [SerializeField] private GameObject fiftyYenPrefab;
+
+    //▼GameManagerに移動
     public int totalValue = 0;
     private int coinValue = 0;
     private List<GameObject> spawnedCoins = new List<GameObject>(); // 生成したコインを管理するリスト
@@ -25,6 +28,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void Start()
     {
+
         //int randomCoinCount = Random.Range(3, 10);
         //SpawnRandomCoins(randomCoinCount);
 
@@ -52,7 +56,7 @@ public class CoinSpawner : MonoBehaviour
 
             spawnedCoins.Add(spawnedCoin);  // 生成したコインをリストに追加
 
-            totalValue += coinValue;　//合計金額にプラス
+            GameManager.Instance.totalValue += coinValue;　//合計金額にプラス
         }
     }
 
