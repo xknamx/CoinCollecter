@@ -281,11 +281,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97599012}
   m_CullTransparentMesh: 1
---- !u!111 &143127216 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 5123994204491988936, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
-  m_PrefabInstance: {fileID: 1242150780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200104767
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fe5858a400edd47b0d80a07c726428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 143127216}
+  animator: {fileID: 2092360089}
   searchButton: {fileID: 1718686088}
 --- !u!224 &362016300 stripped
 RectTransform:
@@ -3130,6 +3125,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5123994204491988936, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5423037378331253664, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
       propertyPath: m_Type
       value: 1
@@ -3154,6 +3153,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 2.98
       objectReference: {fileID: 0}
+    - target: {fileID: 7161534819108141968, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a438f6881df4ac840ad63d07d1cc78a1, type: 2}
     - target: {fileID: 8152583638516886964, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
       propertyPath: m_Name
       value: SearchPanel
@@ -3180,6 +3183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 801682191321103339, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+    - {fileID: 5123994204491988936, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2545385668990384485, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
@@ -4138,6 +4142,11 @@ Transform:
   - {fileID: 495797731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2092360089 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7161534819108141968, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+  m_PrefabInstance: {fileID: 1242150780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2125517677 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4492675923242262384, guid: 7e9e0e420204da841acf30b56e25a6fd, type: 3}

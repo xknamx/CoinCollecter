@@ -15,21 +15,6 @@ public class CoinAnimator : MonoBehaviour
 
     void Start()
     {
-        // RectTransform rectTransform = GetComponent<RectTransform>();
-        //// RectTransform collectTransform. = new Vector2(-450f, 250f);
-
-        // RectTransform spawnrectTransform = GetComponent<RectTransform>();
-
-        // rectTransform.anchoredPosition = new Vector2(rectTransform.position.x, rectTransform.position.y - 60f); //出現位置より60上にずらす
-
-        // rectTransform.DOPunchAnchorPos(rectTransform.anchoredPosition, 1f).SetEase(Ease.OutBounce).OnComplete(() =>
-        // {
-        //     rectTransform.DOAnchorPos(rectTransform.anchoredPosition = new Vector2(-450, 250), 1f);
-        //     rectTransform.DOScale(0f, 1f);
-
-        // });
-        //     // OutBonceでスポーン位置に落とす
-        //     //InExpoで左上の一点に集約と同時にスケールをにしていく
 
 
         rectTransform = GetComponent<RectTransform>();
