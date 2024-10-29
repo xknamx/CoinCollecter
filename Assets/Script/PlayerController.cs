@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,11 +17,14 @@ public class PlayerController : MonoBehaviour
     bool isFrontVendingMachine = false; //自販機の前にいるかのフラグ
 
 
+    [SerializeField] GameObject textBox;
+
     private void Awake()
     {
         playerPos = new Vector3(-17.0f, -2f,transform.position.z);
        // 左端からスタート
 
+        textBox.SetActive(false);
     }
 
     private void Start()
@@ -37,7 +42,6 @@ public class PlayerController : MonoBehaviour
         if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetFloat("speed", 0.0f);
-            animator.SetTrigger("search"); //自販機を探すしゃがみアニメーションを再生
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
         }
     }
@@ -94,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             isFrontVendingMachine = true;  // 自販機が近くにあることを確認
             vendingMachine = other.gameObject;  // 自販機の参照を保持
-            Debug.Log("自販機の前に来た");
+           // Debug.Log("自販機の前に来た");
         }
     }
 
@@ -104,8 +108,29 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("VendingMachine"))
         {
             isFrontVendingMachine = false;
+
+            if (textBox.activeSelf) //テキストボックスが表示されている場合は閉じる
+            {
+                textBox.SetActive(false);
+            }
+            
             Debug.Log("自販機から離れた");
         }
     }
 
+    public void ShowTextBox(string text)
+    {
+        if (!textBox.activeSelf)
+        {
+            textBox.SetActive(true);
+        }
+        var textbox = textBox.GetComponentInChildren<TextMeshProUGUI>();
+        textbox.text = text;
+    }
+
+    public void SearchAnimation()
+    {
+        animator.SetTrigger("search"); //自販機を探すしゃがみアニメーションを再生
+
+    }
 }

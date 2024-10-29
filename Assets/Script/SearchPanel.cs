@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SearchPanel : MonoBehaviour
 {
-    [SerializeField] Animation animation = new Animation();
+    [SerializeField] Animator animator;
     [SerializeField] private SearchButton searchButton; // SearchButtonの参照を追加
 
 
     void Start()
     {
         gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class SearchPanel : MonoBehaviour
     public void ShowSearchPanel()
     {
         gameObject.SetActive(true);
-        StartCoroutine(FadeinAnimation());
+       // StartCoroutine(FadeinAnimation());
 
         // SearchButtonのリセット処理を呼び出す
         searchButton.ResetButton();
@@ -30,12 +31,12 @@ public class SearchPanel : MonoBehaviour
 
    
 
-    IEnumerator FadeinAnimation()
-    {
-        yield return new WaitForSeconds(1f);
-        animation.Play();
+    //IEnumerator FadeinAnimation()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //   // animator.SetTrigger("PlayFadeinAnimation");
 
-    }
+    //}
 
     public void CloseSearchPanel()
     {
