@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OKButton : MonoBehaviour
 {
-    private void start()
+    private void Start()
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
