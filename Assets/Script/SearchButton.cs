@@ -25,7 +25,11 @@ public class SearchButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+        button.onClick.AddListener(OnClick); // OnClickメソッドをボタンのクリックに設定
+        button.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.Play("coin");
+        });
         // ランダムで押せる回数を設定
         maxClickCount = Random.Range(minClickCount, maxClickCountRange); ;
     }
