@@ -21,6 +21,10 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
+    public void LoadTitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
     public void LoadClearScene ()
     {
         SceneManager.LoadScene("ClearScene");
@@ -29,10 +33,18 @@ public class SceneChanger : MonoBehaviour
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene("GameOver");
+        StartCoroutine(RestartSceneChange());
     }
 
     public void LoadFirstTown()
     {
         SceneManager.LoadScene("FirstTownMap");
+    }
+
+    IEnumerator RestartSceneChange()
+    {
+        yield return new WaitForSeconds(10);
+        LoadTitleScene();
+
     }
 }
