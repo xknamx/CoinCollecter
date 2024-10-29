@@ -27,10 +27,11 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         instance = this;
 
-        AudioClip[] audioClips = Resources.LoadAll<AudioClip>("2D_SE");
+        AudioClip[] audioClips = Resources.LoadAll<AudioClip>("SE");
         foreach (var clip in audioClips)
         {
             _clips.Add(clip.name, clip);
+            Debug.Log("Loaded clip: " + clip.name); // クリップ名をコンソールに表示
         }
     }
 
