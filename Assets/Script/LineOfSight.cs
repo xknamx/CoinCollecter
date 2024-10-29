@@ -19,10 +19,12 @@ public class LineOfSight : MonoBehaviour
         // 視線ポイントを加算
         lineOfSightPoint += amount;
 
-        // 視線ポイントが上限を超えないように制限
-        if (lineOfSightPoint > maxLineOfSightPoint)
+        // 視線ポイントが上限を超えたらゲームオーバー
+        if (lineOfSightPoint >= maxLineOfSightPoint)
         {
-            lineOfSightPoint = maxLineOfSightPoint;
+            SceneChanger.Instance.LoadGameOverScene();
+           // lineOfSightPoint = maxLineOfSightPoint;
+           
         }
 
         // ゲージの表示を更新

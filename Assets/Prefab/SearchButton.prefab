@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -9, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 2, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4126820502848535251
 CanvasRenderer:
@@ -136,10 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSpawner: {fileID: 0}
   lineOfSight: {fileID: 0}
-  minClickCount: 2
-  maxClickCountRange: 5
-  minCoinsCount: 3
-  maxCoinsCount: 10
+  minClickCount: 1
+  maxClickCountRange: 4
+  minCoinsCount: 1
+  maxCoinsCount: 7
 --- !u!1 &8620922637573517688
 GameObject:
   m_ObjectHideFlags: 0

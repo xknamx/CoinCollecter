@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }  
+    public static GameManager Instance { get; private set; }
 
     public int totalValue { get; set; }  // コインの合計金額を保持する変数
     public int caughtVendingMachinesCount { get; set; }  //漁った自販機の個数を保存
@@ -29,5 +29,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // すでに存在する場合はこのインスタンスを破棄
         }
+    }
+
+    public void ExitGame() //ゲームを終了するメソッド
+    {
+        Application.Quit();
+
+        // エディタで実行中の場合
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // エディタのプレイモードを停止
+#endif
     }
 }
