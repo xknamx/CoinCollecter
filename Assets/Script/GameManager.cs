@@ -5,7 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }  
-    public int totalValue = 0;  // コインの合計金額を保持する変数
+
+    public int totalValue { get; set; }  // コインの合計金額を保持する変数
+    public int caughtVendingMachinesCount { get; set; }  //漁った自販機の個数を保存
+    public int policeStationVisitsCount { get; set; }  //交番に行った回数
+    public int deliveredAmount { get; set; } 　//届けた金額
+    public int SeenCount { get; set; } //見られた回数
+    public int reportCount { get; set; }  //通報された回数
+    public int drinksConsumedCount { get; set; }  //飲み物を飲んだ回数
+
+    public int finalAmountValue { get; set; } //最終的に残った金額
+
 
     private void Awake()
     {
