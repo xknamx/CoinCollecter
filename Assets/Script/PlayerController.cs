@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     GameObject vendingMachine; //自販機のプレハブ
     bool isFrontVendingMachine = false; //自販機の前にいるかのフラグ
 
+    GameObject Kouban; //交番
+    bool isFrontKouban = false;//交番前にいるかのフラグ
+
 
     [SerializeField] GameObject textBox;
 
@@ -43,6 +46,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("speed", 0.0f);
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
+        }
+
+        // 自販機の前にいるとき、スペースが押されたら交番の処理開始
+        if (isFrontKouban && Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetFloat("speed", 0.0f);
+            Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
     }
 
