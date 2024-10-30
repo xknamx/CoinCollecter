@@ -45,8 +45,12 @@ public class ButtonSelector : MonoBehaviour
             {
                 buttons[i].Select(); // 選択状態にする
                 // 矢印の位置を更新
-                Vector3 buttonPosition = buttons[i].GetComponent<RectTransform>().position;
-                selectTriangle.transform.position = new Vector3(buttonPosition.x-70 , buttonPosition.y , buttonPosition.z); // 横に50、下に-32移動
+                if (selectTriangle != null)
+                {
+                    Vector3 buttonPosition = buttons[i].GetComponent<RectTransform>().position;
+                    selectTriangle.transform.position = new Vector3(buttonPosition.x - 70, buttonPosition.y, buttonPosition.z); // 横に50、下に-32移動
+                }
+               
                //buttons[i].GetComponent<Image>().color = Color.yellow; // 選択中のボタンの色を変更
             }
             else
