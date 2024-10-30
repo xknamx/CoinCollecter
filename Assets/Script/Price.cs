@@ -17,6 +17,6 @@ public class Price : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshPro.text = "所持金: " + GameManager.Instance.totalValue.ToString() + "円";
+        textMeshPro.text = GameManager.Instance.totalValue.ToString();
     }
 }
