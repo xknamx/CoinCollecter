@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems; 
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class ButtonSelector : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class ButtonSelector : MonoBehaviour
         {
             selectedIndex = (selectedIndex - 1 + buttons.Length) % buttons.Length; // 上に移動
             UpdateButtonSelection();
-            
+
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -48,14 +48,13 @@ public class ButtonSelector : MonoBehaviour
                 if (selectTriangle != null)
                 {
                     Vector3 buttonPosition = buttons[i].GetComponent<RectTransform>().position;
-                    selectTriangle.transform.position = new Vector3(buttonPosition.x - 70, buttonPosition.y, buttonPosition.z); // 横に50、下に-32移動
+                    selectTriangle.transform.position = new Vector3(buttonPosition.x, buttonPosition.y, buttonPosition.z);
+                    //buttons[i].GetComponent<Image>().color = Color.yellow; // 選択中のボタンの色を変更
                 }
-               
-               //buttons[i].GetComponent<Image>().color = Color.yellow; // 選択中のボタンの色を変更
-            }
-            else
-            {
-               // buttons[i].GetComponent<Image>().color = Color.white; // 通常の色
+                else
+                {
+                    // buttons[i].GetComponent<Image>().color = Color.white; // 通常の色
+                }
             }
         }
     }

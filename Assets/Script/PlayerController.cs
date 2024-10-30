@@ -49,8 +49,11 @@ public class PlayerController : MonoBehaviour
         // 自販機の前にいるとき、スペースが押されたら交番の処理開始
         if (isFrontKouban && Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetFloat("speed", 0.0f);
-            Kouban.GetComponent<KoubanController>().ClickedKouban();
+            animator.SetTrigger("behind");
+            textBox.SetActive(true);
+            textBox.GetComponentInChildren<TextMeshProUGUI>().text = "お金を届けようか…";
+
+           // Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
     }
 
@@ -158,5 +161,10 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("search"); //自販機を探すしゃがみアニメーションを再生
 
+    }
+
+   public void SelectedNo()
+    {
+        textBox.SetActive(false );
     }
 }

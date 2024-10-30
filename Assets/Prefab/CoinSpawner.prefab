@@ -44,12 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31060b07c83a77a4ab1f1e5c0960e57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneYenPrefab: {fileID: 4484540863207134672, guid: aa7f58d5a039b72478915a6acb4cdfd1, type: 3}
-  fiveYenPrefab: {fileID: 548256106934889487, guid: 0642985425472c94585b43c156869cec, type: 3}
-  tenYenPrefab: {fileID: 6325561258116424723, guid: 8c09336271cbaec4ab598f350e69d9cf, type: 3}
-  fiftyYenPrefab: {fileID: 7823126605453773634, guid: 438065a1099cb824987c78d04a787532, type: 3}
+  gamemanager: {fileID: 0}
+  rectTransform: {fileID: 0}
+  oneYenPrefab: {fileID: 2436554391882429460, guid: 77ed8d74d309df64198ba59ccfdaec8e, type: 3}
+  fiveYenPrefab: {fileID: 7402994673058826627, guid: 536e15fa71a7115489036fcaa8fa310d, type: 3}
+  tenYenPrefab: {fileID: 2923727580130819323, guid: 1acb966e15e68284db3ba8bd682ce9ab, type: 3}
+  fiftyYenPrefab: {fileID: 3211479711581403012, guid: b6da2ac0c4875814684a42f50452e980, type: 3}
   totalValue: 0
-  oneYenProbability: 0.4
-  fiveYenProbability: 0.3
-  tenYenProbability: 0.2
-  fiftyYenProbability: 0.1
+  clearAmount: 0
+  oneYenProbability: 0.7
+  fiveYenProbability: 0.2
+  tenYenProbability: 0.09
+  fiftyYenProbability: 0.01
