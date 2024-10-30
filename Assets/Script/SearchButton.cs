@@ -7,6 +7,7 @@ public class SearchButton : MonoBehaviour
 {
     [SerializeField] private CoinSpawner coinSpawner;
     private Button button;
+    private TextMeshProUGUI buttonText; 
 
     [SerializeField] private LineOfSight lineOfSight;  // LineOfSight の参照
 
@@ -19,12 +20,13 @@ public class SearchButton : MonoBehaviour
     [SerializeField] private int minCoinsCount = 3;  // コイン数の最小値
     [SerializeField] private int maxCoinsCount = 10;  // コイン数の最大値
 
-    
+    [SerializeField] private int goalAmount = 150;
 
 
     private void Awake()
     {
         button = GetComponent<Button>();
+        buttonText = GetComponentInChildren<TextMeshProUGUI>();
         button.onClick.AddListener(OnClick); // OnClickメソッドをボタンのクリックに設定
         button.onClick.AddListener(() =>
         {
@@ -33,6 +35,20 @@ public class SearchButton : MonoBehaviour
         // ランダムで押せる回数を設定
         maxClickCount = Random.Range(minClickCount, maxClickCountRange); ;
     }
+
+    private void Start()
+    {
+        buttonText.text = "さがす";
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.totalValue == goalAmount)
+        { 
+        SceneChanger.Instance.LoadClearScene();
+        }
+    }
+
     private void OnClick()
     {
         // インスペクターで設定された範囲からランダムにコインの数を生成
@@ -54,6 +70,7 @@ public class SearchButton : MonoBehaviour
         if (currentClickCount >= maxClickCount)
         {
             button.interactable = false; // ボタンを無効にする
+            buttonText.text = "なにもないようだ";
             Debug.Log("ボタンが無効化されました。");
         }
     }
@@ -63,6 +80,7 @@ public class SearchButton : MonoBehaviour
     {
         currentClickCount = 0; // クリックカウントをリセット
         button.interactable = true; // ボタンを再度押せるようにする
+        buttonText.text = "さがす";
         Debug.Log("ボタンの状態がリセットされました。");
     }
 }
