@@ -47,7 +47,7 @@ public class SearchButton : MonoBehaviour
         // ボタンが押された回数を増やす
         currentClickCount++;
 
-        Debug.Log("合計金額: " + coinSpawner.totalValue + "円");
+        Debug.Log("合計金額: " + GameManager.Instance.totalValue + "円");
         Debug.Log("現在のクリック数: " + currentClickCount + " / " + maxClickCount);
 
         // クリック数が上限に達したらボタンを無効化

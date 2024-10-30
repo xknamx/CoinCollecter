@@ -20,10 +20,14 @@ public class CoinSpawner : MonoBehaviour
     private int coinValue = 0;
     private List<GameObject> spawnedCoins = new List<GameObject>(); // 生成したコインを管理するリスト
 
+    [SerializeField] private int clearAmount; //集めたらクリアになる金額
+
     [SerializeField] private float oneYenProbability = 0.4f;  // 1円コインの出現確率
     [SerializeField] private float fiveYenProbability = 0.3f; // 5円コインの出現確率
     [SerializeField] private float tenYenProbability = 0.2f;  // 10円コインの出現確率
     [SerializeField] private float fiftyYenProbability = 0.1f; // 50円コインの出現確率
+
+    
 
 
     private void Start()
