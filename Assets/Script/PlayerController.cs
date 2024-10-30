@@ -18,13 +18,15 @@ public class PlayerController : MonoBehaviour
 
     GameObject Kouban; //交番
     bool isFrontKouban = false;//交番前にいるかのフラグ
+    bool isShowUI = false;
+    [SerializeField] SearchPanel searchPanel;
 
 
     [SerializeField] GameObject textBox;
 
     private void Awake()
     {
-        playerPos = new Vector3(transform.position.x, -2f,transform.position.z);
+        playerPos = new Vector3(transform.position.x, -2f, transform.position.z);
         textBox.SetActive(false);
     }
 
@@ -53,13 +55,17 @@ public class PlayerController : MonoBehaviour
             textBox.SetActive(true);
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = "お金を届けようか…";
 
-           // Kouban.GetComponent<KoubanController>().ClickedKouban();
+            // Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
     }
 
     //プレイヤーの移動処理
     void PlayerMoving()
     {
+        if (searchPanel.isShowUI)
+        {
+            return;
+        }
         float horizontal = Input.GetAxis("Horizontal"); // ←→またはADキー入力を検出
         float vertical = Input.GetAxis("Vertical");     // ↑↓またはWSキー入力を検出
 
@@ -109,14 +115,14 @@ public class PlayerController : MonoBehaviour
         {
             isFrontVendingMachine = true;  // 自販機が近くにあることを確認
             vendingMachine = other.gameObject;  // 自販機の参照を保持
-           // Debug.Log("自販機の前に来た");
+                                                // Debug.Log("自販機の前に来た");
         }
 
         if (other.CompareTag("Kouban"))
         {
             isFrontKouban = true;  // 交番が近くにあることを確認
             Kouban = other.gameObject;  // 交番の参照を保持
-         　　Debug.Log("交番の前に来た");
+            Debug.Log("交番の前に来た");
         }
     }
 
@@ -131,7 +137,7 @@ public class PlayerController : MonoBehaviour
             {
                 textBox.SetActive(false);
             }
-            
+
             Debug.Log("自販機から離れた");
         }
         if (other.CompareTag("Kouban"))
@@ -163,8 +169,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   public void SelectedNo()
+    public void SelectedNo()
     {
-        textBox.SetActive(false );
+        textBox.SetActive(false);
     }
 }

@@ -6,11 +6,12 @@ public class SearchPanel : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] private SearchButton searchButton; // SearchButtonの参照を追加
-
+    public bool isShowUI;
 
     void Start()
     {
         gameObject.SetActive(false);
+        isShowUI = false;
 
     }
 
@@ -27,6 +28,8 @@ public class SearchPanel : MonoBehaviour
 
         // SearchButtonのリセット処理を呼び出す
         searchButton.ResetButton();
+
+        isShowUI = true;
     }
 
    
@@ -41,5 +44,7 @@ public class SearchPanel : MonoBehaviour
     public void CloseSearchPanel()
     {
         gameObject.SetActive(false );
+        isShowUI = false;
+
     }
 }
