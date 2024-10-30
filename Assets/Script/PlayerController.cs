@@ -110,6 +110,13 @@ public class PlayerController : MonoBehaviour
             vendingMachine = other.gameObject;  // 自販機の参照を保持
            // Debug.Log("自販機の前に来た");
         }
+
+        if (other.CompareTag("Kouban"))
+        {
+            isFrontKouban = true;  // 交番が近くにあることを確認
+            Kouban = other.gameObject;  // 交番の参照を保持
+         　　Debug.Log("交番の前に来た");
+        }
     }
 
     // 自販機から離れたときにフラグをリセット
@@ -125,6 +132,17 @@ public class PlayerController : MonoBehaviour
             }
             
             Debug.Log("自販機から離れた");
+        }
+        if (other.CompareTag("Kouban"))
+        {
+            isFrontKouban = false;
+
+            if (textBox.activeSelf) //テキストボックスが表示されている場合は閉じる
+            {
+                textBox.SetActive(false);
+            }
+
+            Debug.Log("交番から離れた");
         }
     }
 
