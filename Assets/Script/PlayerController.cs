@@ -24,9 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerPos = new Vector3(-17.0f, -2f,transform.position.z);
-       // 左端からスタート
-
+        playerPos = new Vector3(transform.position.x, -2f,transform.position.z);
         textBox.SetActive(false);
     }
 
