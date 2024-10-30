@@ -5,20 +5,14 @@ using TMPro;
 
 public class ClearText : MonoBehaviour
 {
-   // GameManager gameManager;
+
+
     void Start()
     {
-       // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         GetComponent<TextMeshProUGUI>().text =
-           $"あさった自販機　{GameManager.Instance.caughtVendingMachinesCount}" +
-           $"" +
-           $"ひろった合計金額　{GameManager.Instance.totalValue}";
-    }
-
-    
-    void Update()
-    {
-        
+                       $"あさった自販機数：{GameManager.Instance.caughtVendingMachinesCount}個\n" +
+                       $"ひろった合計金額：{GameManager.Instance.totalValue}円";
     }
 }
