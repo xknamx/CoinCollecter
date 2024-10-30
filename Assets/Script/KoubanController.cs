@@ -16,12 +16,29 @@ public class KoubanController : MonoBehaviour
         Debug.Log("交番がクリックされた");
         if (!isVisit)
         {
-            isVisit = true;
-            //お金を届ける＆視線ゲージが減る処理
+            // LineOfSight コンポーネントを取得
+            LineOfSight lineOfSight = GetComponent<LineOfSight>();
+
+            if (lineOfSight != null)
+            {
+                // 視線ポイントを5減らすメソッドを呼び出し
+                lineOfSight.DecreaseLineOfSight(5);
+                DecreaseTotalValue();
+            }
+            if (GameManager.Instance.totalValue >= 500)
+            {
+                playerController.ShowTextBox("警官の目が気になる");
+            }
+            else
+            {
+                playerController.ShowTextBox("もう訪れた交番だ");
+            }
         }
-        else
-        {
-            playerController.ShowTextBox("もう訪れた交番だ");
-        }
+    }
+
+    //50円はらう
+    void DecreaseTotalValue()
+    {
+        GameManager.Instance.totalValue -= 50;
     }
 }

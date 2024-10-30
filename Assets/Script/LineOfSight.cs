@@ -33,6 +33,17 @@ public class LineOfSight : MonoBehaviour
         Debug.Log("視線ポイント: " + lineOfSightPoint);
     }
 
+    public void DecreaseLineOfSight(int amount)
+    {
+        // 視線ポイントを減らす
+        lineOfSightPoint -= amount;
+
+        if (lineOfSightPoint>0)
+        {
+            lineOfSightPoint -= amount;
+        }
+    }
+
     // ゲージの表示を更新するメソッド
     private void UpdateGauge()
     {

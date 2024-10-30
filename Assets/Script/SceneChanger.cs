@@ -25,7 +25,7 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
-    public void LoadClearScene ()
+    public void LoadClearScene()
     {
         SceneManager.LoadScene("ClearScene");
     }
@@ -39,6 +39,10 @@ public class SceneChanger : MonoBehaviour
     public void LoadFirstTown()
     {
         SceneManager.LoadScene("FirstTownMap");
+    }
+    public void LoadSecondTown()
+    {
+        SceneManager.LoadScene("SecondTown");
     }
 
     IEnumerator RestartSceneChange()

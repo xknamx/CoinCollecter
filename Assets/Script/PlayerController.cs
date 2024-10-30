@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -124,7 +125,19 @@ public class PlayerController : MonoBehaviour
             Kouban = other.gameObject;  // 交番の参照を保持
             Debug.Log("交番の前に来た");
         }
+
+
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Exit"))
+        {
+            SceneChanger.Instance.LoadSecondTown();
+        }
+    }
+
+
 
     // 自販機から離れたときにフラグをリセット
     void OnTriggerExit2D(Collider2D other)

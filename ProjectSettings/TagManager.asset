@@ -8,6 +8,7 @@ TagManager:
   - BackGround
   - Coin
   - Kouban
+  - Exit
   layers:
   - Default
   - TransparentFX
