@@ -24,21 +24,19 @@ public class TextBoxController : MonoBehaviour
         isShowTextBox = false;
     }
 
-    private void Update()
+    public void CloseTextBox()
     {
-        if (isShowTextBox && Input.GetKeyDown(KeyCode.Space))
-        {
-            CloseTextBox();
-        }
+        StartCoroutine(WaitAndHideTextBox());
     }
 
 
    
-    public void CloseTextBox()
+    private IEnumerator WaitAndHideTextBox()
     {
+        yield return null; // 1フレーム待機
+
         gameObject.SetActive(false);
         isShowTextBox = false;
-
     }
 
     public void ShowTextBox(string text, string yesText = "notext", string noText = "notext")
