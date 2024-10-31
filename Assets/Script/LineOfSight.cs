@@ -40,6 +40,7 @@ public class LineOfSight : MonoBehaviour
         if (GameManager.Instance.LightOfSightPoint > 0)
         {
             GameManager.Instance.LightOfSightPoint -= amount;
+            UpdateGauge();
         }
     }
 

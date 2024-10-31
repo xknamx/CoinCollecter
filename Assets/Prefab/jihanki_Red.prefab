@@ -143,5 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccd9c67ca178e3479beaa3338a68239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchPanel: {fileID: 0}
+  searchPanel: {fileID: 8152583638516886964, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
   playerController: {fileID: 0}
+  textBox: {fileID: 0}

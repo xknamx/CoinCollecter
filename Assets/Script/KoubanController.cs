@@ -11,6 +11,8 @@ public class KoubanController : MonoBehaviour
 
     private bool isVisit = false; //すでに交番に行ったかどうかのフラグ
 
+    [SerializeField]TextBoxController textBox;
+
     public void Start()
     {
         // LineOfSight コンポーネントを取得して lineOfSight フィールドに代入
@@ -22,18 +24,20 @@ public class KoubanController : MonoBehaviour
         Debug.Log("交番がクリックされた");
         if (!isVisit)
         {
+
+
             // 視線ポイントを5減らすメソッドを呼び出し
             lineOfSight.DecreaseLineOfSight(2);
             DecreaseTotalValue();
 
             //ゲージをアップデート
-            lineOfSight.UpdateGauge();
+            //lineOfSight.UpdateGauge();
 
             Debug.Log(GameManager.Instance.LightOfSightPoint);
         }
         else
         {
-            playerController.ShowTextBox("もう訪れた交番だ");
+           textBox.ShowTextBox("もう訪れた交番だ");
         }
     }
 

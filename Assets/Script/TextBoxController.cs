@@ -6,26 +6,27 @@ using UnityEngine;
 public class TextBoxController : MonoBehaviour
 {
 
-   [SerializeField] GameObject boolTextBox;
+    [SerializeField] GameObject boolTextBox;
 
 
-    public bool isShowTextBox=false; //テキストボックスが表示されているかのフラグ
-    TextMeshProUGUI yesSelectedText;
-    TextMeshProUGUI noSelectedText;
+    public bool isShowTextBox = false; //テキストボックスが表示されているかのフラグ
+    [SerializeField] GameObject yesSelectedText;
+    [SerializeField] GameObject noSelectedText;
 
     [SerializeField] SearchPanel searchPanel;
 
     private void Start()
     {
-       
-        yesSelectedText = boolTextBox.transform.Find("Yes").GetComponent<TextMeshProUGUI>();
-        yesSelectedText = boolTextBox.transform.Find("No").GetComponent<TextMeshProUGUI>();
 
+
+
+        gameObject.SetActive(false);
+        isShowTextBox = false;
     }
 
     private void Update()
     {
-        if(isShowTextBox && Input.GetKeyDown(KeyCode.Space))
+        if (isShowTextBox && Input.GetKeyDown(KeyCode.Space))
         {
             CloseTextBox();
         }
@@ -47,21 +48,22 @@ public class TextBoxController : MonoBehaviour
         var textbox = GetComponentInChildren<TextMeshProUGUI>();
         textbox.text = text;
 
-        if (yesText== "notext" || noText== "notext")
+        if (yesText == "notext" || noText == "notext")
         {
             boolTextBox.SetActive(false);
         }
         else
         {
             boolTextBox.SetActive(true);
-            yesSelectedText.text = yesText;
-            noSelectedText.text = noText;
+            yesSelectedText.GetComponentInChildren<TextMeshProUGUI>().text = yesText;
+            noSelectedText.GetComponentInChildren<TextMeshProUGUI>().text = noText;
+
         }
 
-        
-      
+
+
     }
 
-   
+
 
 }
