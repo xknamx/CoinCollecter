@@ -6,6 +6,7 @@ public class KoubanController : MonoBehaviour
 {
 
     [SerializeField] PlayerController playerController;
+    [SerializeField] TextBoxController textBoxController;
 
 
     private bool isVisit = false; //すでに交番に行ったかどうかのフラグ
@@ -27,11 +28,11 @@ public class KoubanController : MonoBehaviour
             }
             if (GameManager.Instance.totalValue >= 500)
             {
-                playerController.ShowTextBox("警官の目が気になる");
+               textBoxController.ShowTextBox("警官の目が気になる");
             }
             else
             {
-                playerController.ShowTextBox("もう訪れた交番だ");
+                textBoxController.ShowTextBox("もう訪れた交番だ");
             }
         }
     }
