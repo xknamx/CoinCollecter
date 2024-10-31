@@ -6,38 +6,40 @@ public class KoubanController : MonoBehaviour
 {
 
     [SerializeField] PlayerController playerController;
+    private LineOfSight lineOfSight;  // LineOfSight の参照
 
 
     private bool isVisit = false; //すでに交番に行ったかどうかのフラグ
 
+    public void Start()
+    {
+        // LineOfSight コンポーネントを取得して lineOfSight フィールドに代入
+        lineOfSight = FindObjectOfType<LineOfSight>();
+    }
 
     public void ClickedKouban()
     {
         Debug.Log("交番がクリックされた");
         if (!isVisit)
         {
-            // LineOfSight コンポーネントを取得
-            LineOfSight lineOfSight = GetComponent<LineOfSight>();
+            // 視線ポイントを5減らすメソッドを呼び出し
+            lineOfSight.DecreaseLineOfSight(2);
+            DecreaseTotalValue();
 
-            if (lineOfSight != null)
-            {
-                // 視線ポイントを5減らすメソッドを呼び出し
-                lineOfSight.DecreaseLineOfSight(5);
-                DecreaseTotalValue();
-            }
-            if (GameManager.Instance.totalValue >= 500)
-            {
-                playerController.ShowTextBox("警官の目が気になる");
-            }
-            else
-            {
-                playerController.ShowTextBox("もう訪れた交番だ");
-            }
+            //ゲージをアップデート
+            lineOfSight.UpdateGauge();
+
+            Debug.Log(GameManager.Instance.LightOfSightPoint);
+        }
+        else
+        {
+            playerController.ShowTextBox("もう訪れた交番だ");
         }
     }
 
+
     //50円はらう
-   public void DecreaseTotalValue()
+    public void DecreaseTotalValue()
     {
         GameManager.Instance.totalValue -= 50;
     }
