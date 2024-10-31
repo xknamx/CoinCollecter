@@ -14,6 +14,8 @@ public class VendingMachineController : MonoBehaviour
 
     private bool isSearched = false; //すでに探された自販機かどうかのフラグ
 
+    [SerializeField]TextBoxController textBox;
+
     void Start()
     {
         
@@ -36,7 +38,7 @@ public class VendingMachineController : MonoBehaviour
         }
         else 
         {
-            playerController.ShowTextBox("もう探した自販機だ");
+            textBox.ShowTextBox("もう探した自販機だ");
         }
     }
 

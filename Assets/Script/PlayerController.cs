@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SearchPanel searchPanel;
 
 
-    [SerializeField] GameObject textBox;
+    [SerializeField] TextBoxController textBox;
 
     private void Awake()
     {
         playerPos = new Vector3(transform.position.x, -2f, transform.position.z);
-        textBox.SetActive(false);
+
     }
 
     private void Start()
@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
         // 自販機の前にいるとき、スペースが押されたら自販機を探す
         if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space))
         {
+            if (searchPanel.isShowUI || textBox.isShowTextBox)
+            {
+                return;
+            }
             animator.SetFloat("speed", 0.0f);
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
         }
@@ -52,9 +56,9 @@ public class PlayerController : MonoBehaviour
         // 自販機の前にいるとき、スペースが押されたら交番の処理開始
         if (isFrontKouban && Input.GetKeyDown(KeyCode.Space))
         {
+
             animator.SetTrigger("behind");
-            textBox.SetActive(true);
-            textBox.GetComponentInChildren<TextMeshProUGUI>().text = "お金を届けようか…";
+            textBox.ShowTextBox("お金をとどけようか…", "とどける", "とどけない");
 
             Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
@@ -63,10 +67,11 @@ public class PlayerController : MonoBehaviour
     //プレイヤーの移動処理
     void PlayerMoving()
     {
-        if (searchPanel.isShowUI)
+        if (searchPanel.isShowUI || textBox.isShowTextBox)
         {
             return;
         }
+
         float horizontal = Input.GetAxis("Horizontal"); // ←→またはADキー入力を検出
         float vertical = Input.GetAxis("Vertical");     // ↑↓またはWSキー入力を検出
 
@@ -146,35 +151,26 @@ public class PlayerController : MonoBehaviour
         {
             isFrontVendingMachine = false;
 
-            if (textBox.activeSelf) //テキストボックスが表示されている場合は閉じる
-            {
-                textBox.SetActive(false);
-            }
+
+            textBox.CloseTextBox();
+
 
             Debug.Log("自販機から離れた");
         }
+
         if (other.CompareTag("Kouban"))
         {
             isFrontKouban = false;
 
-            if (textBox.activeSelf) //テキストボックスが表示されている場合は閉じる
-            {
-                textBox.SetActive(false);
-            }
+
+            textBox.CloseTextBox();
+
 
             Debug.Log("交番から離れた");
         }
     }
 
-    public void ShowTextBox(string text)
-    {
-        if (!textBox.activeSelf)
-        {
-            textBox.SetActive(true);
-        }
-        var textbox = textBox.GetComponentInChildren<TextMeshProUGUI>();
-        textbox.text = text;
-    }
+   
 
     public void SearchAnimation()
     {
@@ -182,8 +178,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void SelectedNo()
-    {
-        textBox.SetActive(false);
-    }
+   
 }

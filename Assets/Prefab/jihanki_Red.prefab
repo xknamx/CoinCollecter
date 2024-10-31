@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccd9c67ca178e3479beaa3338a68239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  searchPanel: {fileID: 0}
+  playerController: {fileID: 0}
