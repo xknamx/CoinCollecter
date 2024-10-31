@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     bool isShowUI = false;
     [SerializeField] SearchPanel searchPanel;
 
-   
+
     [SerializeField] TextBoxController textBox;
 
     SceneChanger changer;
@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerPos = new Vector3(transform.position.x, -2f, transform.position.z);
-
+        // playerPos = new Vector3(transform.position.x, -2f, transform.position.z);
+       
     }
 
     private void Start()
@@ -39,6 +39,18 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         changer = GameObject.FindObjectOfType<SceneChanger>();
+
+        if (GameManager.Instance.isPlayerSpownLeft)
+        {
+            playerPos = new Vector3(playerPosMinX + 0.5f, -2f, transform.position.z);
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            playerPos = new Vector3(playerPosMaxX - 0.5f, -2f, transform.position.z);
+            spriteRenderer.flipX = true;
+        }
+        transform.position = playerPos;
 
     }
 
@@ -132,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             isFrontKouban = true;  // 交番が近くにあることを確認
             Kouban = other.gameObject;  // 交番の参照を保持
-          //  Debug.Log("交番の前に来た");
+                                        //  Debug.Log("交番の前に来た");
         }
 
 
@@ -142,11 +154,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("SecondTown"))
         {
+            GameManager.Instance.isPlayerSpownLeft = true;
             changer.LoadSecondTown();
-        } 
-        
+
+        }
+
         if (other.CompareTag("FirstTown"))
         {
+            GameManager.Instance.isPlayerSpownLeft = false;
             changer.LoadFirstTown();
         }
     }
@@ -172,14 +187,14 @@ public class PlayerController : MonoBehaviour
             isFrontKouban = false;
 
 
-           // textBox.CloseTextBox();
+            // textBox.CloseTextBox();
 
 
             Debug.Log("交番から離れた");
         }
     }
 
-   
+
 
     public void SearchAnimation()
     {
@@ -187,5 +202,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
+
 }

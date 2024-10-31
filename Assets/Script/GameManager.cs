@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public float LightOfSightPoint {  get; set; }  //視線ポイント
 
+    public bool isPlayerSpownLeft = true;  //プレイヤーのスポーン位置が左端かどうかのフラグ
+
 
     private void Awake()
     {

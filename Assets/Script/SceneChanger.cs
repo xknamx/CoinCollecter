@@ -27,6 +27,7 @@ public class SceneChanger : MonoBehaviour
         GameManager.Instance.LightOfSightPoint = 0;
         GameManager.Instance.totalValue = 0;
         GameManager.Instance.caughtVendingMachinesCount = 0;
+        GameManager.Instance.isPlayerSpownLeft = true;
     }
     public void LoadClearScene()
     {
@@ -41,10 +42,12 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadFirstTown()
     {
+
         SceneManager.LoadScene("FirstTownMap");
     }
     public void LoadSecondTown()
     {
+
         SceneManager.LoadScene("SecondTown");
     }
 
