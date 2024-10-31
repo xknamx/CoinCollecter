@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
 
             animator.SetTrigger("behind");
-            textBox.ShowTextBox("お金をとどけようか…", "とどける", "とどけない");
+            //textBox.ShowTextBox("お金をとどけようか…", "とどける", "とどけない");
 
             Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
@@ -136,9 +136,14 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Exit"))
+        if (other.CompareTag("SecondTown"))
         {
             SceneChanger.Instance.LoadSecondTown();
+        } 
+        
+        if (other.CompareTag("FirstTown"))
+        {
+            SceneChanger.Instance.LoadFirstTown();
         }
     }
 

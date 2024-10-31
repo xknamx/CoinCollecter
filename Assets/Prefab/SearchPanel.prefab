@@ -1034,6 +1034,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5219046862740668861}
     m_Modifications:
     - target: {fileID: 474536109742425877, guid: e9dd6e7ef05feee4287f8f7dc65f1b01, type: 3}
+      propertyPath: maxCoinsCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 474536109742425877, guid: e9dd6e7ef05feee4287f8f7dc65f1b01, type: 3}
       propertyPath: minClickCount
       value: 5
       objectReference: {fileID: 0}

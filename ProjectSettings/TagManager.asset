@@ -9,6 +9,8 @@ TagManager:
   - Coin
   - Kouban
   - Exit
+  - SecondTown
+  - FirstTown
   layers:
   - Default
   - TransparentFX
