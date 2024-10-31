@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             textBox.SetActive(true);
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = "お金を届けようか…";
 
-            // Kouban.GetComponent<KoubanController>().ClickedKouban();
+            Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
     }
 
