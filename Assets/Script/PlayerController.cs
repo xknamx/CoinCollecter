@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("behind");
             textBox.ShowTextBox("お金をとどけようか…", "とどける", "とどけない");
 
-            // Kouban.GetComponent<KoubanController>().ClickedKouban();
+            Kouban.GetComponent<KoubanController>().ClickedKouban();
         }
     }
 
