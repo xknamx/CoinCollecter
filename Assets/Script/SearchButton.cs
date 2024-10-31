@@ -7,7 +7,7 @@ public class SearchButton : MonoBehaviour
 {
     [SerializeField] private CoinSpawner coinSpawner;
     private Button button;
-    private TextMeshProUGUI buttonText; 
+    private TextMeshProUGUI buttonText;
 
     [SerializeField] private LineOfSight lineOfSight;  // LineOfSight の参照
 
@@ -22,6 +22,8 @@ public class SearchButton : MonoBehaviour
 
     [SerializeField] private int goalAmount = 150;
 
+    SceneChanger changer;
+
 
     private void Awake()
     {
@@ -34,54 +36,55 @@ public class SearchButton : MonoBehaviour
         });
         // ランダムで押せる回数を設定
         maxClickCount = Random.Range(minClickCount, maxClickCountRange); ;
+
+        changer = GameObject.FindObjectOfType<SceneChanger>();
     }
-
-    private void Start()
-    {
-        buttonText.text = "さがす";
-    }
-
-    private void Update()
-    {
-        if (GameManager.Instance.totalValue >= goalAmount)
-        { 
-        SceneChanger.Instance.LoadClearScene();
-        }
-    }
-
-    private void OnClick()
-    {
-        // インスペクターで設定された範囲からランダムにコインの数を生成
-        int randomCoinCount = Random.Range(minCoinsCount, maxCoinsCount);
-
-        // コインをリセットし、新しいコインを生成
-        coinSpawner.SpawnRandomCoins(randomCoinCount);
-
-        // 視線ポイントを加算
-        lineOfSight.IncreaseLineOfSightPoint(0.5f);  // 1ポイントずつ加算
-
-        // ボタンが押された回数を増やす
-        currentClickCount++;
-
-        Debug.Log("合計金額: " + GameManager.Instance.totalValue + "円");
-        Debug.Log("現在のクリック数: " + currentClickCount + " / " + maxClickCount);
-
-        // クリック数が上限に達したらボタンを無効化
-        if (currentClickCount >= maxClickCount)
+        private void Start()
         {
-            button.interactable = false; // ボタンを無効にする
-            buttonText.text = "なにもないようだ";
-            Debug.Log("ボタンが無効化されました。");
+            buttonText.text = "さがす";
+        }
+
+        private void Update()
+        {
+            if (GameManager.Instance.totalValue >= goalAmount)
+            {
+                changer.LoadClearScene();
+            }
+        }
+
+        private void OnClick()
+        {
+            // インスペクターで設定された範囲からランダムにコインの数を生成
+            int randomCoinCount = Random.Range(minCoinsCount, maxCoinsCount);
+
+            // コインをリセットし、新しいコインを生成
+            coinSpawner.SpawnRandomCoins(randomCoinCount);
+
+            // 視線ポイントを加算
+            lineOfSight.IncreaseLineOfSightPoint(0.5f);  // 1ポイントずつ加算
+
+            // ボタンが押された回数を増やす
+            currentClickCount++;
+
+            Debug.Log("合計金額: " + GameManager.Instance.totalValue + "円");
+            Debug.Log("現在のクリック数: " + currentClickCount + " / " + maxClickCount);
+
+            // クリック数が上限に達したらボタンを無効化
+            if (currentClickCount >= maxClickCount)
+            {
+                button.interactable = false; // ボタンを無効にする
+                buttonText.text = "なにもないようだ";
+                Debug.Log("ボタンが無効化されました。");
+            }
+        }
+
+        // リセットメソッドを追加
+        public void ResetButton()
+        {
+            currentClickCount = 0; // クリックカウントをリセット
+            button.interactable = true; // ボタンを再度押せるようにする
+            buttonText.text = "さがす";
+            Debug.Log("ボタンの状態がリセットされました。");
         }
     }
-
-    // リセットメソッドを追加
-    public void ResetButton()
-    {
-        currentClickCount = 0; // クリックカウントをリセット
-        button.interactable = true; // ボタンを再度押せるようにする
-        buttonText.text = "さがす";
-        Debug.Log("ボタンの状態がリセットされました。");
-    }
-}
 

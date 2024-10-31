@@ -8,10 +8,12 @@ public class LineOfSight : MonoBehaviour
     private int lineOfSightPoint = 0;  // 視線ポイントの初期値
     public int maxLineOfSightPoint = 100;  // 視線ポイントの上限値
     [SerializeField] private Image LineOfSightBar; // ゲージのイメージ
+    SceneChanger changer;
 
     public void Start()
     {
         UpdateGauge();
+        changer = GameObject.FindObjectOfType<SceneChanger>();
     }
 
 
@@ -24,7 +26,7 @@ public class LineOfSight : MonoBehaviour
         // 視線ポイントが上限を超えたらゲームオーバー
         if (GameManager.Instance.LightOfSightPoint >= maxLineOfSightPoint)
         {
-            SceneChanger.Instance.LoadGameOverScene();
+            changer.LoadGameOverScene();
            // lineOfSightPoint = maxLineOfSightPoint;
            
         }

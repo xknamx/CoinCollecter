@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
     bool isShowUI = false;
     [SerializeField] SearchPanel searchPanel;
 
-
+   
     [SerializeField] TextBoxController textBox;
+
+    SceneChanger changer;
+
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        changer = GameObject.FindObjectOfType<SceneChanger>();
 
     }
 
@@ -138,12 +142,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("SecondTown"))
         {
-            SceneChanger.Instance.LoadSecondTown();
+            changer.LoadSecondTown();
         } 
         
         if (other.CompareTag("FirstTown"))
         {
-            SceneChanger.Instance.LoadFirstTown();
+            changer.LoadFirstTown();
         }
     }
 
