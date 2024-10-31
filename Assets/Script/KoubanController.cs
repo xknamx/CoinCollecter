@@ -37,7 +37,7 @@ public class KoubanController : MonoBehaviour
     }
 
     //50円はらう
-    void DecreaseTotalValue()
+   public void DecreaseTotalValue()
     {
         GameManager.Instance.totalValue -= 50;
     }
