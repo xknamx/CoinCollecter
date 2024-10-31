@@ -26,6 +26,7 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("Title");
         GameManager.Instance.LightOfSightPoint = 0;
         GameManager.Instance.totalValue = 0;
+        GameManager.Instance.caughtVendingMachinesCount = 0;
     }
     public void LoadClearScene()
     {
