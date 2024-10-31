@@ -1,28 +1,42 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class TitleAnimator : MonoBehaviour
+public class TitleAnimetor : MonoBehaviour
 {
+    [SerializeField] private Image image; // フェードインさせるタイトルテキスト
+    [SerializeField] private float fadeDuration = 2f;   // フェードインの時間
 
-    void Start()
+    private void Start()
     {
-
-            //// 回転と揺れのアニメーションをシーケンスで作成
-            //Sequence mySequence = DOTween.Sequence();
-
-            //// 「びよん」と回転させるアニメーション (FastBeyond360 で一回転以上)
-            //mySequence.Append(transform.DORotate(new Vector3(0, 0, -90), 1f, RotateMode.FastBeyond360));
-
-            //// 「ゆらゆら」と揺らすアニメーション（Punch）
-            //mySequence.Append(transform.DOPunchRotation(new Vector3(50f, 0f, 50f), 5f, 2, 30f));
-
-            //// シーケンスを再生
-            //mySequence.Play();
-        }
+        // フェードインを開始
+        StartCoroutine(FadeInTitle());
     }
 
+    private IEnumerator FadeInTitle()
+    {
+        // アルファ値を0にして、最初は見えないようにする
+        Color color = image.color;
+        color.a = 0;
+        image.color = color;
 
+        float elapsedTime = 0f;
 
+        // フェードインループ
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            // アルファ値を増加させてフェードインを実現
+            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+            image.color = color;
+
+            yield return null; // 次のフレームまで待機
+        }
+
+        // 完全にフェードインさせるためにアルファ値を1に設定
+        color.a = 1;
+        image.color = color;
+    }
+}
