@@ -8,6 +8,13 @@ public class CreateAnimation : MonoBehaviour
     [SerializeField] float scrollSpeed = 20f; // スクロールの速度
     [SerializeField] float offScreenYPosition = 500f;  // 画面外と判断する Y 座標
 
+    SceneChanger changer;
+
+    private void Start()
+    {
+        changer = GameObject.FindObjectOfType<SceneChanger>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +26,7 @@ public class CreateAnimation : MonoBehaviour
         if (rectTransform.anchoredPosition.y > offScreenYPosition)
         {
             // タイトルシーンに遷移
-            SceneChanger.Instance.LoadTitleScene();
+            changer.LoadTitleScene();
         }
     }
 }

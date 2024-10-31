@@ -2710,6 +2710,22 @@ PrefabInstance:
       propertyPath: lineOfSight
       value: 
       objectReference: {fileID: 1449378417}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: minClickCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: buttonSelector
+      value: 
+      objectReference: {fileID: 1242150781}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: maxClickCountRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303171939258590254, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: buttonSelector
+      value: 
+      objectReference: {fileID: 1242150781}
     - target: {fileID: 8152583638516886964, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
       propertyPath: m_Name
       value: SearchPanel
@@ -2719,6 +2735,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+--- !u!114 &1242150781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1263227065726295540, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+  m_PrefabInstance: {fileID: 1242150780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362016291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ef49b1dfb85a54f993459479314b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1250256283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3405,6 +3432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3552dda92775f7d48a8e1a59f661bd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalAmount: 150
+  isPlayerSpownLeft: 1
 --- !u!224 &2031731253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7543876500578551281, guid: e90da5d7990c69d40bfb54999f727003, type: 3}

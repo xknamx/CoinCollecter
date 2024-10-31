@@ -5,25 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public static SceneChanger Instance { get; private set; }
+    //public static SceneChanger Instance { get; private set; }
 
-    private void Awake()
-    {
-        // シングルトンの設定
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンが切り替わっても破棄されないようにする
-        }
-        else
-        {
-            Destroy(gameObject); // すでに存在する場合はこのインスタンスを破棄
-        }
-    }
+    //private void Awake()
+    //{
+    //    // シングルトンの設定
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(gameObject); // シーンが切り替わっても破棄されないようにする
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject); // すでに存在する場合はこのインスタンスを破棄
+    //    }
+    //}
 
     public void LoadTitleScene()
     {
         SceneManager.LoadScene("Title");
+        GameManager.Instance.LightOfSightPoint = 0;
+        GameManager.Instance.totalValue = 0;
+        GameManager.Instance.caughtVendingMachinesCount = 0;
+        GameManager.Instance.isPlayerSpownLeft = true;
     }
     public void LoadClearScene()
     {
@@ -38,10 +42,12 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadFirstTown()
     {
+
         SceneManager.LoadScene("FirstTownMap");
     }
     public void LoadSecondTown()
     {
+
         SceneManager.LoadScene("SecondTown");
     }
 

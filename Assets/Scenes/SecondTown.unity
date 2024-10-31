@@ -14115,6 +14115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3552dda92775f7d48a8e1a59f661bd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalAmount: 150
+  isPlayerSpownLeft: 1
 --- !u!4 &1560259418
 Transform:
   m_ObjectHideFlags: 0
@@ -14344,6 +14346,18 @@ PrefabInstance:
       propertyPath: lineOfSight
       value: 
       objectReference: {fileID: 2051459895}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: minClickCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: buttonSelector
+      value: 
+      objectReference: {fileID: 1927289807}
+    - target: {fileID: 3815500096346679639, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+      propertyPath: maxClickCountRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8152583638516886964, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
       propertyPath: m_Name
       value: SearchPanel
@@ -14374,6 +14388,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2545385668990384485, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
   m_PrefabInstance: {fileID: 1927289803}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927289807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1263227065726295540, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
+  m_PrefabInstance: {fileID: 1927289803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927289804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ef49b1dfb85a54f993459479314b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1971196028
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class SearchPanel : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] private SearchButton searchButton; // SearchButtonの参照を追加
     public bool isShowUI;
+    //[SerializeField] ButtonSelector buttonSelector;
 
     void Start()
     {
@@ -14,6 +15,8 @@ public class SearchPanel : MonoBehaviour
         isShowUI = false;
 
     }
+
+    
 
     // Update is called once per frame
     void Update()

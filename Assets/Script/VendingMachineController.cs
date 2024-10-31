@@ -35,6 +35,7 @@ public class VendingMachineController : MonoBehaviour
             isSearched = true;
             playerController.SearchAnimation();
             StartCoroutine(ShowUIPanel());
+            GameManager.Instance.caughtVendingMachinesCount++;
         }
         else 
         {
