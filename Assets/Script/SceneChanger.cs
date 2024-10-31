@@ -24,6 +24,8 @@ public class SceneChanger : MonoBehaviour
     public void LoadTitleScene()
     {
         SceneManager.LoadScene("Title");
+        GameManager.Instance.LightOfSightPoint = 0;
+        GameManager.Instance.totalValue = 0;
     }
     public void LoadClearScene()
     {

@@ -27,6 +27,7 @@ public class LineOfSight : MonoBehaviour
         if (GameManager.Instance.LightOfSightPoint >= maxLineOfSightPoint)
         {
             changer.LoadGameOverScene();
+           
            // lineOfSightPoint = maxLineOfSightPoint;
            
         }
