@@ -16,7 +16,7 @@ public class LineOfSight : MonoBehaviour
 
 
     // 視線ポイントを加算するためのメソッド
-    public void IncreaseLineOfSightPoint(int amount)
+    public void IncreaseLineOfSightPoint(float amount)
     {
         // 視線ポイントを加算
         GameManager.Instance.LightOfSightPoint += amount;
@@ -53,7 +53,7 @@ public class LineOfSight : MonoBehaviour
     }
 
     // 視線ポイントを取得するメソッド
-    public int GetLineOfSightPoint()
+    public float GetLineOfSightPoint()
     {
         return GameManager.Instance.LightOfSightPoint;
     }

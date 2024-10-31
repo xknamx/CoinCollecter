@@ -43,7 +43,7 @@ public class SearchButton : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.totalValue == goalAmount)
+        if (GameManager.Instance.totalValue >= goalAmount)
         { 
         SceneChanger.Instance.LoadClearScene();
         }
@@ -58,7 +58,7 @@ public class SearchButton : MonoBehaviour
         coinSpawner.SpawnRandomCoins(randomCoinCount);
 
         // 視線ポイントを加算
-        lineOfSight.IncreaseLineOfSightPoint(1);  // 1ポイントずつ加算
+        lineOfSight.IncreaseLineOfSightPoint(0.5f);  // 1ポイントずつ加算
 
         // ボタンが押された回数を増やす
         currentClickCount++;

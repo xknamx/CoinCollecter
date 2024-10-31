@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public int finalAmountValue { get; set; } //最終的に残った金額
 
-    public int LightOfSightPoint {  get; set; }  //視線ポイント
+    public float LightOfSightPoint {  get; set; }  //視線ポイント
 
 
     private void Awake()
