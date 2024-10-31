@@ -29,10 +29,11 @@ public class ButtonSelector : MonoBehaviour
             UpdateButtonSelection();
         }
 
-        // Enterキーで選択したボタンをクリック
-        if (Input.GetKeyDown(KeyCode.Return))
+        Debug.Log("キーチェック");
+        // spaceキーで選択したボタンをクリック
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            buttons[selectedIndex].onClick.Invoke(); // ボタンのクリックイベントを呼び出す
+              buttons[selectedIndex].onClick.Invoke(); // ボタンのクリックイベントを呼び出す
         }
     }
 
