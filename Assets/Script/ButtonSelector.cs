@@ -14,6 +14,9 @@ public class ButtonSelector : MonoBehaviour
         UpdateButtonSelection(); // 初期選択の更新
     }
 
+
+   
+
     void Update()
     {
         // 上下キーで選択ボタンを切り替え
@@ -35,10 +38,22 @@ public class ButtonSelector : MonoBehaviour
         {
               buttons[selectedIndex].onClick.Invoke(); // ボタンのクリックイベントを呼び出す
         }
+
+        // ボタン無効化後、次のボタンに選択を移動
+        SelectNextButton();
     }
+
+  
 
     private void UpdateButtonSelection()
     {
+        // 無効なボタンをスキップする
+        while (!buttons[selectedIndex].interactable)
+        {
+            // インデックスを次に移動
+            selectedIndex = (selectedIndex + 1) % buttons.Length;
+        }
+
         // ボタンの選択状態を更新
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -59,6 +74,21 @@ public class ButtonSelector : MonoBehaviour
             }
         }
     }
+    public void SelectNextButton()
+    {
+        // 現在の選択ボタンがインタラクト可能かチェック
+        if (!buttons[selectedIndex].interactable)
+        {
+            // 次のインタラクト可能なボタンが見つかるまでインデックスを更新
+            int startIndex = selectedIndex;
+            do
+            {
+                selectedIndex = (selectedIndex + 1) % buttons.Length;
+            } while (!buttons[selectedIndex].interactable && selectedIndex != startIndex);
 
+            // 更新後のボタンを選択
+            UpdateButtonSelection();
+        }
+    }
 
 }

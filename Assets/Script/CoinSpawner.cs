@@ -12,11 +12,11 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private GameObject fiftyYenPrefab;
 
     //▼GameManagerに移動
-    public int totalValue = 0;
+    //public int totalValue = 0;
     private int coinValue = 0;
     private List<GameObject> spawnedCoins = new List<GameObject>(); // 生成したコインを管理するリスト
 
-    [SerializeField] private int clearAmount; //集めたらクリアになる金額
+    //[SerializeField] private int clearAmount; //集めたらクリアになる金額
 
     [SerializeField] private float oneYenProbability = 0.4f;  // 1円コインの出現確率
     [SerializeField] private float fiveYenProbability = 0.3f; // 5円コインの出現確率

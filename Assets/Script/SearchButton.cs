@@ -20,9 +20,10 @@ public class SearchButton : MonoBehaviour
     [SerializeField] private int minCoinsCount = 3;  // コイン数の最小値
     [SerializeField] private int maxCoinsCount = 10;  // コイン数の最大値
 
-    [SerializeField] private int goalAmount = 150;
+   // [SerializeField] private int goalAmount = 150;
 
     SceneChanger changer;
+    //[SerializeField] ButtonSelector buttonSelector;
 
 
     private void Awake()
@@ -46,7 +47,7 @@ public class SearchButton : MonoBehaviour
 
         private void Update()
         {
-            if (GameManager.Instance.totalValue >= goalAmount)
+            if (GameManager.Instance.totalValue >= GameManager.Instance.goalAmount)
             {
                 changer.LoadClearScene();
             }
@@ -75,7 +76,9 @@ public class SearchButton : MonoBehaviour
                 button.interactable = false; // ボタンを無効にする
                 buttonText.text = "なにもないようだ";
                 Debug.Log("ボタンが無効化されました。");
-            }
+
+           
+        }
         }
 
         // リセットメソッドを追加

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public int goalAmount = 150; //クリアするための金額設定
     public int totalValue { get; set; }  // コインの合計金額を保持する変数
     public int caughtVendingMachinesCount { get; set; }  //漁った自販機の個数を保存
     public int policeStationVisitsCount { get; set; }  //交番に行った回数
