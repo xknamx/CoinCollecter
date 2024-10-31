@@ -873,6 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7161534819108141968}
   searchButton: {fileID: 3815500096346679639}
+  isShowUI: 0
 --- !u!114 &1263227065726295540
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -295,11 +295,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8152583638516886964, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
   m_PrefabInstance: {fileID: 1242150780}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &362016300 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2545385668990384485, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
-  m_PrefabInstance: {fileID: 1242150780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &362016302 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4303171939258590254, guid: b03a66e567b6b71418c53239e2a5f97a, type: 3}
@@ -2326,7 +2321,7 @@ PrefabInstance:
     - target: {fileID: 4492675923242262384, guid: 7e9e0e420204da841acf30b56e25a6fd, type: 3}
       propertyPath: rectTransform
       value: 
-      objectReference: {fileID: 362016300}
+      objectReference: {fileID: 0}
     - target: {fileID: 4492675923242262384, guid: 7e9e0e420204da841acf30b56e25a6fd, type: 3}
       propertyPath: fiftyYenPrefab
       value: 

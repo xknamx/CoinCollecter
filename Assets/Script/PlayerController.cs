@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         float horizontal = Input.GetAxis("Horizontal"); // ←→またはADキー入力を検出
         float vertical = Input.GetAxis("Vertical");     // ↑↓またはWSキー入力を検出
 
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("自販機から離れた");
         }
+
         if (other.CompareTag("Kouban"))
         {
             isFrontKouban = false;
@@ -168,6 +170,11 @@ public class PlayerController : MonoBehaviour
 
     public void ShowTextBox(string text)
     {
+        if (searchPanel.isShowUI)
+        {
+            return;
+        }
+
         if (!textBox.activeSelf)
         {
             textBox.SetActive(true);
