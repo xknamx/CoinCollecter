@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             isFrontKouban = true;  // 交番が近くにあることを確認
             Kouban = other.gameObject;  // 交番の参照を保持
-            Debug.Log("交番の前に来た");
+          //  Debug.Log("交番の前に来た");
         }
 
 
