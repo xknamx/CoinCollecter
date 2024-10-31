@@ -9,7 +9,7 @@ public class KoubanController : MonoBehaviour
     private LineOfSight lineOfSight;  // LineOfSight の参照
 
 
-    private bool isVisit = false; //すでに交番に行ったかどうかのフラグ
+    //private bool isVisit = false; //すでに交番に行ったかどうかのフラグ
 
     [SerializeField]TextBoxController textBox;
 
@@ -21,30 +21,29 @@ public class KoubanController : MonoBehaviour
 
     public void ClickedKouban()
     {
+        if (textBox.isShowTextBox)
+        {
+            return;
+        }
+
         Debug.Log("交番がクリックされた");
-        if (!isVisit)
+        if (GameManager.Instance.totalValue - 50 <= 0)
         {
-
-
-            // 視線ポイントを5減らすメソッドを呼び出し
-            lineOfSight.DecreaseLineOfSight(2);
-            DecreaseTotalValue();
-
-            //ゲージをアップデート
-            //lineOfSight.UpdateGauge();
-
+            textBox.ShowTextBox("こんな額届けても…");
+            return; 
+        }
+            textBox.ShowTextBox("交番にお金を届けようか…","とどける","とどけない");
+        
+       
             Debug.Log(GameManager.Instance.LightOfSightPoint);
-        }
-        else
-        {
-           textBox.ShowTextBox("もう訪れた交番だ");
-        }
+       
     }
 
 
     //50円はらう
     public void DecreaseTotalValue()
     {
+        
         GameManager.Instance.totalValue -= 50;
     }
 }

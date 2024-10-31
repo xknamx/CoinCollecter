@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             vendingMachine.GetComponent<VendingMachineController>().ClickedVendingMachineOnMap();
         }
 
-        // 自販機の前にいるとき、スペースが押されたら交番の処理開始
+        // 交番前にいるとき、スペースが押されたら交番の処理開始
         if (isFrontKouban && Input.GetKeyDown(KeyCode.Space))
         {
 
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
             isFrontVendingMachine = false;
 
 
-            textBox.CloseTextBox();
+            //textBox.CloseTextBox();
 
 
             Debug.Log("自販機から離れた");
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
             isFrontKouban = false;
 
 
-            textBox.CloseTextBox();
+           // textBox.CloseTextBox();
 
 
             Debug.Log("交番から離れた");

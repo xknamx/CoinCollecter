@@ -32,6 +32,8 @@ public class TextBoxController : MonoBehaviour
         }
     }
 
+
+   
     public void CloseTextBox()
     {
         gameObject.SetActive(false);
