@@ -59,9 +59,9 @@ public class PlayerController : MonoBehaviour
         PlayerMoving();
 
         // 自販機の前にいるとき、スペースが押されたら自販機を探す
-        if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space))
+        if (isFrontVendingMachine && Input.GetKeyDown(KeyCode.Space)&& !textBox.isShowTextBox)
         {
-            if (searchPanel.isShowUI || textBox.isShowTextBox)
+            if (searchPanel.isShowUI)
             {
                 return;
             }
@@ -70,13 +70,17 @@ public class PlayerController : MonoBehaviour
         }
 
         // 交番前にいるとき、スペースが押されたら交番の処理開始
-        if (isFrontKouban && Input.GetKeyDown(KeyCode.Space))
+        else if (isFrontKouban && Input.GetKeyDown(KeyCode.Space) && !textBox.isShowTextBox)
         {
 
             animator.SetTrigger("behind");
             //textBox.ShowTextBox("お金をとどけようか…", "とどける", "とどけない");
 
             Kouban.GetComponent<KoubanController>().ClickedKouban();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && textBox.isShowTextBox)
+        {
+            textBox.CloseTextBox();
         }
     }
 
